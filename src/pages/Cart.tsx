@@ -1,8 +1,8 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FiShoppingCart, FiArrowLeft, FiTrash2, FiMinus, FiPlus, FiWhatsapp } from "react-icons/fi";
+import { FiShoppingCart, FiArrowLeft, FiTrash2, FiMinus, FiPlus } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa"; // Import WhatsApp icon from Font Awesome icons
 import { useCartStore } from "@/store/cartStore";
 import { toast } from "sonner";
 
@@ -139,7 +139,7 @@ Order ID: TC-${Date.now().toString().slice(-8)}`;
                     <>Processing...</>
                   ) : (
                     <>
-                      <FiWhatsapp size={20} /> Proceed with WhatsApp
+                      <FaWhatsapp size={20} /> Proceed with WhatsApp
                     </>
                   )}
                 </button>

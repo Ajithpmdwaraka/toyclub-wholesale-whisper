@@ -1,7 +1,6 @@
-
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { FiArrowRight, FiTruck, FiUsers, FiGlobe, FiBox } from "react-icons/fi";
 
 const About = () => {
@@ -276,7 +275,7 @@ interface TimelineItemProps {
   title: string;
   description: string;
   alignment: 'left' | 'right';
-  scrollYProgress: any;
+  scrollYProgress: MotionValue<number>; // Fixed type here
   isLast?: boolean;
 }
 
