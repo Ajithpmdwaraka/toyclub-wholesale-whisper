@@ -11,6 +11,7 @@ import "swiper/css/pagination";
 import "swiper/css/effect-creative";
 
 import ToyModel3D from "@/components/ToyModel3D";
+import ToyCarousel from "@/components/ToyCarousel";
 import ProductCard from "@/components/ProductCard";
 import { products } from "@/data/products";
 
@@ -131,7 +132,7 @@ const Home = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              <ToyModel3D />
+              <ToyCarousel interval={8000}  />{/* <ToyModel3D toyType="dinosaur" /> */}
             </motion.div>
           </div>
         </div>
