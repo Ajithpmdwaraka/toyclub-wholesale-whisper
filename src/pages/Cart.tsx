@@ -17,19 +17,39 @@ const Cart = () => {
     try {
       setIsProcessing(true);
       
-      // Generate formatted message for WhatsApp
-      const orderDetails = items.map(item => 
-        `- ${item.product.name}, Quantity: ${item.quantity}, Price: $${(item.product.price * item.quantity).toFixed(2)}`
-      ).join('\n');
+      // Generate a random order ID
+      const orderId = `TC-${Date.now().toString().slice(-8)}`;
       
-      const message = `ToyClub Wholesale Order:
-${orderDetails}
-Total: $${totalPrice.toFixed(2)}
-Order ID: TC-${Date.now().toString().slice(-8)}`;
+      // Get current date
+      const date = new Date().toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+      
+      // Generate formatted message for WhatsApp with better formatting
+      const orderDetails = items.map(item => 
+        `• ${item.product.name}\n   Quantity: ${item.quantity}\n   Unit Price: $${item.product.price.toFixed(2)}\n   Subtotal: $${(item.product.price * item.quantity).toFixed(2)}`
+      ).join('\n\n');
+      
+      const message = `🧸 *TOYCLUB WHOLESALE ORDER* 🧸\n
+📋 *ORDER DETAILS*
+--------------------------
+${orderDetails}\n
+💰 *ORDER SUMMARY*
+--------------------------
+Total Items: ${items.length}
+Total Quantity: ${items.reduce((sum, item) => sum + item.quantity, 0)}
+*Total Amount: $${totalPrice.toFixed(2)}*\n
+📊 *ORDER INFORMATION*
+--------------------------
+Order ID: ${orderId}
+Date: ${date}\n
+Please confirm this order to proceed with processing. Thank you for shopping with ToyClub Wholesale!`;
       
       // Format WhatsApp URL with phone number and encoded message
       const encodedMessage = encodeURIComponent(message);
-      const whatsappUrl = `https://wa.me/+919846494210?text=${encodedMessage}`;
+      const whatsappUrl = `https://wa.me/+919446739729?text=${encodedMessage}`;
       
       // Open WhatsApp in new window
       window.open(whatsappUrl, '_blank');
